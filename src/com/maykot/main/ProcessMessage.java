@@ -6,11 +6,14 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.commons.lang3.SerializationUtils;
+
 import com.digi.xbee.api.RemoteXBeeDevice;
 import com.digi.xbee.api.exceptions.TimeoutException;
 import com.digi.xbee.api.exceptions.XBeeException;
 import com.maykot.radiolibrary.IProcessMessage;
 import com.maykot.radiolibrary.MessageParameter;
+import com.maykot.radiolibrary.ProxyResponse;
 import com.maykot.radiolibrary.Router;
 
 public class ProcessMessage implements IProcessMessage {
@@ -43,4 +46,16 @@ public class ProcessMessage implements IProcessMessage {
 	public void textFileConfirm(byte[] message) {
 		System.out.println(new String(message));
 	}
+
+	@Override
+	public void httpPostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void httpPostConfirm(byte[] message) {
+		ProxyResponse proxyResponse = (ProxyResponse) SerializationUtils.deserialize(message);
+		System.out.println("Response Status Code: " + proxyResponse.getStatusCode());
+	}
+
 }
