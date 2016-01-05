@@ -62,31 +62,28 @@ public class TestRouter {
 			break;
 
 		case 3:
-			try {
-				byte[] dataToSend = Files.readAllBytes(Paths.get("Texto_Longo.txt"));
-				System.out.println(new String(dataToSend));
-				for (int i = 0; i < 3; i++) {
-					try {
-						System.out.println("Enviando Texto Longo " + (i + 1));
-						Router.getInstance().sendMessage(MainApp.myDevice, MainApp.remoteDevice,
-								MessageParameter.SEND_TXT_FILE, dataToSend);
-						Thread.sleep(3000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+			for (int i = 0; i < 3; i++) {
+				try {
+					byte[] dataToSend = Files.readAllBytes(Paths.get("Texto_Longo.txt"));
+					System.out.println("Enviando Texto Longo " + (i + 1));
+					Router.getInstance().sendMessage(MainApp.myDevice, MainApp.remoteDevice,
+							MessageParameter.SEND_TXT_FILE, dataToSend);
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (TimeoutException e) {
+					System.out.println("Erro " + ErrorMessage.TIMEOUT_ERROR.value() + ": "
+							+ ErrorMessage.TIMEOUT_ERROR.description());
+					e.printStackTrace();
+				} catch (XBeeException e) {
+					System.out.println("Erro " + ErrorMessage.XBEE_EXCEPTION_ERROR.value() + ": "
+							+ ErrorMessage.XBEE_EXCEPTION_ERROR.description());
+					e.printStackTrace();
 				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				System.out.println(
-						"Erro " + ErrorMessage.TIMEOUT_ERROR.value() + ": " + ErrorMessage.TIMEOUT_ERROR.description());
-				e.printStackTrace();
-			} catch (XBeeException e) {
-				System.out.println("Erro " + ErrorMessage.XBEE_EXCEPTION_ERROR.value() + ": "
-						+ ErrorMessage.XBEE_EXCEPTION_ERROR.description());
-				e.printStackTrace();
 			}
 			break;
 

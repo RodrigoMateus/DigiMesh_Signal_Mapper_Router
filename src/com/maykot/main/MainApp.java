@@ -59,6 +59,7 @@ public class MainApp {
 		try {
 			XTEND_PORT = deviceConfig.getXTendPort();
 			myDevice = openDevice(XTEND_PORT, XTEND_BAUD_RATE);
+			myDevice.setReceiveTimeout(TIMEOUT_FOR_SYNC_OPERATIONS);
 			myDevice.addExplicitDataListener(Router.getInstance());
 			System.out.println("Was found LOCAL radio " + myDevice.getNodeID() + " (PowerLevel "
 					+ myDevice.getPowerLevel() + ").");
