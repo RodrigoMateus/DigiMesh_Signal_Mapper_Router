@@ -14,7 +14,7 @@ import com.digi.xbee.api.exceptions.XBeeException;
 import com.maykot.radiolibrary.IProcessMessage;
 import com.maykot.radiolibrary.MessageParameter;
 import com.maykot.radiolibrary.ProxyResponse;
-import com.maykot.radiolibrary.Router;
+import com.maykot.radiolibrary.RouterRadio;
 
 public class ProcessMessage implements IProcessMessage {
 
@@ -25,7 +25,7 @@ public class ProcessMessage implements IProcessMessage {
 			FileOutputStream fileChannel = new FileOutputStream(fileName);
 			fileChannel.write(message);
 			fileChannel.close();
-			Router.getInstance().sendMessage(MainApp.myDevice, sourceDeviceAddress, MessageParameter.CONFIRM_TXT_FILE,
+			RouterRadio.getInstance().sendMessage(MainApp.myDevice, sourceDeviceAddress, MessageParameter.CONFIRM_TXT_FILE,
 					new String("Texto enviado com SUCESSO!").getBytes());
 		} catch (FileNotFoundException e) {
 			System.out.println("FileNotFoundException: ERRO ao criar arquivo texto");
