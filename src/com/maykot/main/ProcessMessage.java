@@ -17,6 +17,15 @@ import com.maykot.radiolibrary.ProxyResponse;
 import com.maykot.radiolibrary.RouterRadio;
 
 public class ProcessMessage implements IProcessMessage {
+	private RouterRadio routerRadio;
+
+	public ProcessMessage() {
+		this(RouterRadio.getInstance());
+	}
+
+	public ProcessMessage(RouterRadio routerRadio) {
+		this.routerRadio = routerRadio;
+	}
 
 	@Override
 	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
@@ -25,7 +34,7 @@ public class ProcessMessage implements IProcessMessage {
 			FileOutputStream fileChannel = new FileOutputStream(fileName);
 			fileChannel.write(message);
 			fileChannel.close();
-			RouterRadio.getInstance().sendMessage(MainApp.myDevice, sourceDeviceAddress, MessageParameter.CONFIRM_TXT_FILE,
+			routerRadio.sendMessage(MainApp.myDevice, sourceDeviceAddress, MessageParameter.CONFIRM_TXT_FILE,
 					new String("Texto enviado com SUCESSO!").getBytes());
 		} catch (FileNotFoundException e) {
 			System.out.println("FileNotFoundException: ERRO ao criar arquivo texto");

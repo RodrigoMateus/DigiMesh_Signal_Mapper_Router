@@ -15,6 +15,15 @@ import com.maykot.radiolibrary.ProxyResponse;
 import com.maykot.radiolibrary.RouterRadio;
 
 public class RouterMqtt implements MqttCallback {
+	private RouterRadio routerRadio;
+
+	public RouterMqtt() {
+		this(RouterRadio.getInstance());
+	}
+
+	public RouterMqtt(RouterRadio routerRadio) {
+		this.routerRadio = routerRadio;
+	}
 
 	@Override
 	public void connectionLost(Throwable arg0) {
@@ -42,8 +51,8 @@ public class RouterMqtt implements MqttCallback {
 			byte[] dataToSend = message.getPayload();
 
 			try {
-				RouterRadio.getInstance().sendMessage(MainApp.myDevice, MainApp.remoteDevice,
-						MessageParameter.SEND_HTTP_POST, dataToSend);
+				routerRadio.sendMessage(MainApp.myDevice, MainApp.remoteDevice, MessageParameter.SEND_HTTP_POST,
+						dataToSend);
 			} catch (TransmitException e) {
 				System.out.println(
 						ErrorMessage.TRANSMIT_EXCEPTION.value() + ": " + ErrorMessage.TRANSMIT_EXCEPTION.description());
