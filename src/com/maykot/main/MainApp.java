@@ -8,12 +8,12 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import com.digi.xbee.api.DigiMeshDevice;
 import com.digi.xbee.api.RemoteXBeeDevice;
 import com.digi.xbee.api.exceptions.XBeeException;
-import com.digi.xbee.api.utils.DeviceConfig;
-import com.digi.xbee.api.utils.LogRecord;
 import com.maykot.mqtt.RouterMqtt;
 import com.maykot.radiolibrary.DiscoverRemoteDevice;
 import com.maykot.radiolibrary.OpenMyDevice;
 import com.maykot.radiolibrary.RouterRadio;
+import com.maykot.utils.DeviceConfig;
+import com.maykot.utils.LogRecord;
 
 public class MainApp {
 
@@ -37,13 +37,9 @@ public class MainApp {
 		System.out.println(" +-------------------+\n");
 
 		try {
-			deviceConfig = new DeviceConfig();
-
-			BROKER_URL = deviceConfig.getBrokerURL();
-			CLIENT_ID = deviceConfig.getClientId();
-			SUBSCRIBED_TOPIC = deviceConfig.getSubscribedTopic();
-			QoS = deviceConfig.getQoS();
+			deviceConfig = DeviceConfig.getInstance();
 		} catch (IOException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		new LogRecord();
@@ -64,11 +60,12 @@ public class MainApp {
 		}
 
 		try {
-			mqttClient = new MqttClient(BROKER_URL, CLIENT_ID, null);
-			mqttClient.setCallback(new RouterMqtt());
-			mqttClient.connect();
-			mqttClient.subscribe(SUBSCRIBED_TOPIC, QoS);
+			mqttClient = new RouterMqtt(myDevice, remoteDevice).connect();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (MqttException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

@@ -120,7 +120,7 @@ public class TestRouter {
 		proxyRequest.setUrl("http://localhost:8000");
 
 		HashMap<String, String> header = new HashMap<String, String>();
-		header.put("content-type", "image/png");
+		header.put("content-type", "image/jpg");
 		header.put("proxy-response", "0");
 		proxyRequest.setHeader(header);
 		proxyRequest
