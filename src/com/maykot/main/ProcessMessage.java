@@ -11,20 +11,21 @@ import org.apache.commons.lang3.SerializationUtils;
 import com.digi.xbee.api.RemoteXBeeDevice;
 import com.digi.xbee.api.exceptions.TimeoutException;
 import com.digi.xbee.api.exceptions.XBeeException;
+import com.maykot.radiolibrary.ErrorMessage;
 import com.maykot.radiolibrary.IProcessMessage;
 import com.maykot.radiolibrary.MessageParameter;
 import com.maykot.radiolibrary.ProxyResponse;
-import com.maykot.radiolibrary.RouterRadio;
+import com.maykot.radiolibrary.RadioRouter;
 
 public class ProcessMessage implements IProcessMessage {
-	
-	private RouterRadio routerRadio;
+
+	private RadioRouter routerRadio;
 
 	public ProcessMessage() {
-		this(RouterRadio.getInstance());
+		this(RadioRouter.getInstance());
 	}
 
-	public ProcessMessage(RouterRadio routerRadio) {
+	public ProcessMessage(RadioRouter routerRadio) {
 		this.routerRadio = routerRadio;
 	}
 
@@ -58,14 +59,29 @@ public class ProcessMessage implements IProcessMessage {
 	}
 
 	@Override
-	public void httpPostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
+	public void localPostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public void httpPostConfirm(byte[] message) {
+	public void localPostConfirm(byte[] message) {
 		ProxyResponse proxyResponse = (ProxyResponse) SerializationUtils.deserialize(message);
-		System.out.println("Response Status Code: " + proxyResponse.getStatusCode());
+		System.out.println("Local POST Response: " + proxyResponse.getStatusCode() + " - "
+				+ ErrorMessage.get(proxyResponse.getStatusCode()).description());
+	}
+
+	@Override
+	public void mobilePostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
+		ProxyResponse proxyResponse = (ProxyResponse) SerializationUtils.deserialize(message);
+		System.out.println("Mobile POST Response: " + proxyResponse.getStatusCode() + " - "
+				+ ErrorMessage.get(proxyResponse.getStatusCode()).description());
+	}
+
+	@Override
+	public void mobilePostConfirm(byte[] message) {
+		ProxyResponse proxyResponse = (ProxyResponse) SerializationUtils.deserialize(message);
+		System.out.println("Mobile POST Response: " + proxyResponse.getStatusCode() + " - "
+				+ ErrorMessage.get(proxyResponse.getStatusCode()).description());
 	}
 
 }
