@@ -1,4 +1,4 @@
-package com.maykot.main;
+package com.maykot.digimesh_router;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,10 +12,10 @@ import org.apache.commons.lang3.SerializationUtils;
 
 import com.digi.xbee.api.exceptions.TimeoutException;
 import com.digi.xbee.api.exceptions.XBeeException;
-import com.maykot.radiolibrary.ErrorMessage;
-import com.maykot.radiolibrary.MessageParameter;
-import com.maykot.radiolibrary.ProxyRequest;
 import com.maykot.radiolibrary.RadioRouter;
+import com.maykot.radiolibrary.model.ErrorMessage;
+import com.maykot.radiolibrary.model.MessageParameter;
+import com.maykot.radiolibrary.model.ProxyRequest;
 
 public class TestRouter {
 

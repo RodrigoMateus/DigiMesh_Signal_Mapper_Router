@@ -1,4 +1,4 @@
-package com.maykot.main;
+package com.maykot.digimesh_router;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -6,12 +6,12 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import com.digi.xbee.api.DigiMeshDevice;
 import com.digi.xbee.api.RemoteXBeeDevice;
 import com.digi.xbee.api.exceptions.XBeeException;
-import com.maykot.mqtt.MqttRouter;
 import com.maykot.radiolibrary.RadioRouter;
-import com.maykot.utils.DeviceConfig;
-import com.maykot.utils.DiscoverRemoteDevice;
-import com.maykot.utils.LogRecord;
-import com.maykot.utils.OpenMyDevice;
+import com.maykot.radiolibrary.mqtt.MqttRouter;
+import com.maykot.radiolibrary.utils.DeviceConfig;
+import com.maykot.radiolibrary.utils.DiscoverRemoteDevice;
+import com.maykot.radiolibrary.utils.LogRecord;
+import com.maykot.radiolibrary.utils.OpenMyDevice;
 
 public class MainApp {
 
@@ -50,7 +50,7 @@ public class MainApp {
 		}
 
 		try {
-			MqttRouter.getInstance().setMqttRouter(deviceConfig, myDevice, remoteDevice);
+			mqttClient = MqttRouter.getInstance().setMqttRouter(deviceConfig, myDevice, remoteDevice);
 		} catch (MqttException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
