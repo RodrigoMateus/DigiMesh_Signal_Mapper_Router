@@ -119,7 +119,7 @@ public class TestRouter {
 
 	public static void sendLocalPost() {
 		ProxyRequest proxyRequest = new ProxyRequest();
-		proxyRequest.setVerb("POST");
+		proxyRequest.setVerb("post");
 		proxyRequest.setUrl("http://localhost:8000");
 
 		HashMap<String, String> header = new HashMap<String, String>();
