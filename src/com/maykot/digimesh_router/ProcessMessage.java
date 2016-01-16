@@ -11,6 +11,7 @@ import com.maykot.radiolibrary.mqtt.ProxyResponseSender;
 
 public class ProcessMessage implements IProcessMessage {
 
+	@SuppressWarnings("unused")
 	private RadioRouter radioRouter;
 
 	public ProcessMessage() {
@@ -19,6 +20,17 @@ public class ProcessMessage implements IProcessMessage {
 
 	public ProcessMessage(RadioRouter radioRouter) {
 		this.radioRouter = radioRouter;
+	}
+
+	@Override
+	public void clientConnectionReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void clientConnectionConfirm(byte[] message) {
+		System.out.println(new String(message));
 	}
 
 	@Override

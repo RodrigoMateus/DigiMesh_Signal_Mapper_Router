@@ -14,8 +14,7 @@ hs_err_pid*
 /bin/
 /bin/.gitignore
 /DeviceConfig.properties
-/ProxyRequestLog.txt
-/ProxyResponseLog.txt
-/log.txt
-/ErrorLog.txt
-/LogRecord.txt
+*.json
+*.txt
+*.png
+*.jpg
