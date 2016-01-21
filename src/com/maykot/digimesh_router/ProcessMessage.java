@@ -7,7 +7,7 @@ import com.maykot.radiolibrary.RadioRouter;
 import com.maykot.radiolibrary.interfaces.IProcessMessage;
 import com.maykot.radiolibrary.model.ErrorMessage;
 import com.maykot.radiolibrary.model.ProxyResponse;
-import com.maykot.radiolibrary.mqtt.ProxyResponseSender;
+import com.maykot.radiolibrary.mqtt.MqttMessageSender;
 
 public class ProcessMessage implements IProcessMessage {
 
@@ -67,7 +67,7 @@ public class ProcessMessage implements IProcessMessage {
 		String clientId = proxyResponse.getMqttClientId();
 		String messageId = proxyResponse.getIdMessage();
 
-		new ProxyResponseSender().sendResponseMessage(MainApp.mqttClient, clientId, messageId, message);
+		new MqttMessageSender().sendResponseMessage(MainApp.mqttClient, clientId, messageId, message);
 		System.out.println("Mobile POST Response: " + proxyResponse.getStatusCode() + " - "
 				+ ErrorMessage.get(proxyResponse.getStatusCode()).description());
 	}
