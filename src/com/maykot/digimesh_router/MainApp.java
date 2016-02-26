@@ -61,7 +61,7 @@ public class MainApp {
 		// Envia uma mensagem para testar a conexão.
 		try {
 			RadioRouter.getInstance().sendMessage(myDevice, remoteDevice, MessageParameter.SEND_CLIENT_CONNECTION,
-					new String(remoteDevice.getNodeID() + " client is connected!").getBytes());
+					new String(myDevice.getNodeID() + " client is connected!").getBytes());
 		} catch (TimeoutException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
