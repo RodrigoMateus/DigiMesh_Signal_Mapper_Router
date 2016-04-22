@@ -3,9 +3,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/_XBeeJavaLibrary"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/_RadioJavaLibrary"/>
-	<classpathentry kind="lib" path="/_RadioJavaLibrary/libs/commons-lang3-3.4.jar"/>
-	<classpathentry kind="lib" path="/_RadioJavaLibrary/libs/commons-lang3-3.4-javadoc.jar"/>
-	<classpathentry kind="lib" path="/_RadioJavaLibrary/libs/org.eclipse.paho.client.mqttv3-1.0.2.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Otmis_RadioJavaLibrary"/>
+	<classpathentry kind="lib" path="/Otmis_RadioJavaLibrary/libs/commons-lang3-3.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="/Otmis_RadioJavaLibrary/libs/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="/Otmis_RadioJavaLibrary/libs/org.eclipse.paho.client.mqttv3-1.0.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

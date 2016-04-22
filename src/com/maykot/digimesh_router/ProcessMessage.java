@@ -72,4 +72,28 @@ public class ProcessMessage implements IProcessMessage {
 				+ ErrorMessage.get(proxyResponse.getStatusCode()).description());
 	}
 
+	@Override
+	public void packetTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void packetTransferConfirm(byte[] message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void telemetryTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

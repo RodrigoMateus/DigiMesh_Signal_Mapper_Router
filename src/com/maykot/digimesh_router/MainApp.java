@@ -3,7 +3,7 @@ package com.maykot.digimesh_router;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
-import com.digi.xbee.api.DigiMeshDevice;
+import com.digi.xbee.api.ZigBeeDevice;
 import com.digi.xbee.api.RemoteXBeeDevice;
 import com.digi.xbee.api.ZigBeeDevice;
 import com.digi.xbee.api.exceptions.TimeoutException;
@@ -23,7 +23,7 @@ public class MainApp {
 	static DeviceConfig deviceConfig;
 
 	/* Se o rádio for um XTend */
-	public static DigiMeshDevice myDevice = null;
+	public static ZigBeeDevice myDevice = null;
 
 	/* Se o rádio for um XBee */
 //	public static ZigBeeDevice myDevice = null;
@@ -45,7 +45,7 @@ public class MainApp {
 		new LogRecord();
 
 		deviceConfig = DeviceConfig.getInstance();
-		myDevice = OpenMyDevice.open(deviceConfig, myDevice);
+		myDevice = OpenMyDevice.open(deviceConfig);
 
 		// Registra listener para processar mensagens recebidas
 		RadioRouter.getInstance().addProcessMessageListener(new ProcessMessage());
