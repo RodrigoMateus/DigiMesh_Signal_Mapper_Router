@@ -22,12 +22,8 @@ public class MainApp {
 	/* Arquivo de configurações do sistema */
 	static DeviceConfig deviceConfig;
 
-	/* Se o rádio for um XTend */
 	public static DigiMeshDevice myDevice = null;
 
-	/* Se o rádio for um XBee */
-//	public static DigiMeshDevice myDevice = null;
-	
 	public static RemoteXBeeDevice remoteDevice;
 
 	/* MQTT */

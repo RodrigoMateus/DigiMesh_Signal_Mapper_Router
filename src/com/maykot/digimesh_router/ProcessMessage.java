@@ -3,6 +3,8 @@ package com.maykot.digimesh_router;
 import org.apache.commons.lang3.SerializationUtils;
 
 import com.digi.xbee.api.RemoteXBeeDevice;
+import com.digi.xbee.api.exceptions.XBeeException;
+import com.digi.xbee.api.utils.ByteUtils;
 import com.maykot.radiolibrary.RadioRouter;
 import com.maykot.radiolibrary.interfaces.IProcessMessage;
 import com.maykot.radiolibrary.model.ErrorMessage;
@@ -41,6 +43,14 @@ public class ProcessMessage implements IProcessMessage {
 	@Override
 	public void textFileConfirm(byte[] message) {
 		System.out.println(new String(message));
+		byte[] rssi;
+		try {
+			rssi = MainApp.myDevice.getParameter("DB");
+			System.out.println(new String("RSSI Value: " + ByteUtils.byteArrayToInt(rssi)));
+		} catch (XBeeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -75,25 +85,25 @@ public class ProcessMessage implements IProcessMessage {
 	@Override
 	public void packetTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void packetTransferConfirm(byte[] message) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void telemetryTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
