@@ -8,6 +8,7 @@ import com.digi.xbee.api.RemoteXBeeDevice;
 import com.digi.xbee.api.DigiMeshDevice;
 import com.digi.xbee.api.exceptions.TimeoutException;
 import com.digi.xbee.api.exceptions.XBeeException;
+import com.maykot.radiolibrary.MyRadio;
 import com.maykot.radiolibrary.RadioRouter;
 import com.maykot.radiolibrary.model.MessageParameter;
 import com.maykot.radiolibrary.mqtt.MqttRouter;
@@ -22,7 +23,7 @@ public class MainApp {
 	/* Arquivo de configurações do sistema */
 	static DeviceConfig deviceConfig;
 
-	public static DigiMeshDevice myDevice = null;
+	public static MyRadio myDevice = null;
 
 	public static RemoteXBeeDevice remoteDevice;
 
