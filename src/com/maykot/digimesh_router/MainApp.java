@@ -44,19 +44,15 @@ public class MainApp {
 		/* Sender = Receiver */
 		senderDevice = receiverDevice;
 
-		// Registra listener para processar mensagens recebidas
-
 		try {
 			remoteDevice = DiscoverRemoteDevice.discover(deviceConfig, receiverDevice);
 		} catch (XBeeException e2) {
-			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
 
 		try {
 			mqttClient = MqttRouter.getInstance().setMqttRouter(deviceConfig, senderDevice, remoteDevice);
 		} catch (MqttException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -65,10 +61,8 @@ public class MainApp {
 			new RadioTransmiter().sendMessage(senderDevice, remoteDevice, MessageParameter.SEND_CLIENT_CONNECTION,
 					new String(senderDevice.getNodeID() + " client is connected!").getBytes());
 		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (XBeeException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
