@@ -1,26 +1,40 @@
 ##### COMMON SETTINGS #####
-XTendBaudRate = 115200
-RemoteNodeID = XTEND01
+DeviceBaudRate = 115200
 TimeOutForSyncOperations = 10000
+RemoteNodeID = XTEND01
+
+##### DEVICE TYPE #####
+# Para rádios XTend usar DigiMeshDevice
+# Para rádios XBee e semelhantes usar ZigBeeDevice
+DeviceType = DigiMeshDevice
+#DeviceType = ZigBeeDevice
+
+##### PAYLOAD SIZE #####
+# Payload ou MTU (Maximum Transmission Unit) é a quantidade de bytes que cabe em uma mensagem.
+# Para XTend usar PAYLOAD_SIZE = 250 e para XBee usar PAYLOAD_SIZE = 100.
+PayloadSize = 250
+#PayloadSize = 100
 
 ##### MQTT SETTINGS #####
 #BrokerURL = tcp://iot.eclipse.org:1883
 #BrokerURL = tcp://192.168.42.1:1883
 BrokerURL = tcp://127.0.0.1:1883
 #BrokerURL = tcp://192.168.43.42:1883
+#BrokerURL = tcp://192.168.0.118:1883
 ClientId = Maykot_Router
 SubscribedTopic = maykot/#
 QoS = 2
 
-##### WINDOWS SETTINGS #####
-#XTendPort = COM6
-#XTendPort = COM13
-#XTendPort = COM14
+##### WINDOWS PORT SETTINGS #####
+#DevicePort = COM6
+#DevicePort = COM13
+#DevicePort = COM14
 
-# MAC OSX SETTINGS
-XTendPort = /dev/tty.usbserial
-#XTendPort = /dev/tty.usbserial-141
-#XTendPort = /dev/tty.usbserial-142
+# MAC OSX PORT SETTINGS
+DevicePort = /dev/tty.usbserial
+#DevicePort = /dev/tty.usbserial-141
+#DevicePort = /dev/tty.usbserial-142
+#DevicePort = /dev/tty.usbserial-AI02MM9F
 
-##### LINUX SETTINGS #####
-#XTendPort = /dev/ttyUSB0
+##### LINUX PORT SETTINGS #####
+#DevicePort = /dev/ttyUSB0
