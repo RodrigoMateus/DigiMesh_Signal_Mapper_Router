@@ -5,7 +5,6 @@ import org.apache.commons.lang3.SerializationUtils;
 import com.digi.xbee.api.RemoteXBeeDevice;
 import com.digi.xbee.api.exceptions.XBeeException;
 import com.digi.xbee.api.utils.ByteUtils;
-import com.maykot.radiolibrary.RadioRouter;
 import com.maykot.radiolibrary.interfaces.IProcessMessage;
 import com.maykot.radiolibrary.model.ErrorMessage;
 import com.maykot.radiolibrary.model.ProxyResponse;
@@ -13,15 +12,8 @@ import com.maykot.radiolibrary.mqtt.MqttMessageSender;
 
 public class ProcessMessage implements IProcessMessage {
 
-	@SuppressWarnings("unused")
-	private RadioRouter radioRouter;
-
 	public ProcessMessage() {
-		this(RadioRouter.getInstance());
-	}
 
-	public ProcessMessage(RadioRouter radioRouter) {
-		this.radioRouter = radioRouter;
 	}
 
 	@Override
@@ -45,7 +37,7 @@ public class ProcessMessage implements IProcessMessage {
 		System.out.println(new String(message));
 		byte[] rssi;
 		try {
-			rssi = MainApp.myDevice.getParameter("DB");
+			rssi = MainApp.receiverDevice.getParameter("DB");
 			System.out.println(new String("RSSI Value: " + ByteUtils.byteArrayToInt(rssi)));
 		} catch (XBeeException e) {
 			// TODO Auto-generated catch block
