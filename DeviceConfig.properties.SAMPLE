@@ -1,7 +1,8 @@
 ##### COMMON SETTINGS #####
 DeviceBaudRate = 115200
 TimeOutForSyncOperations = 10000
-RemoteNodeID = XTEND01
+#RemoteNodeID = Coord01
+RemoteNodeID = XTEND_SERIAL04
 
 ##### DEVICE TYPE #####
 # Para rádios XTend usar DigiMeshDevice
@@ -27,13 +28,11 @@ QoS = 2
 
 ##### WINDOWS PORT SETTINGS #####
 #DevicePort = COM6
-#DevicePort = COM13
-#DevicePort = COM14
 
 # MAC OSX PORT SETTINGS
-DevicePort = /dev/tty.usbserial
+#DevicePort = /dev/tty.usbserial
 #DevicePort = /dev/tty.usbserial-141
-#DevicePort = /dev/tty.usbserial-142
+DevicePort = /dev/tty.usbserial-142
 #DevicePort = /dev/tty.usbserial-AI02MM9F
 
 ##### LINUX PORT SETTINGS #####
