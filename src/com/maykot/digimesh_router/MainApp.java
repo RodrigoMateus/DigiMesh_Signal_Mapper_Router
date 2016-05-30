@@ -32,9 +32,9 @@ public class MainApp {
 	static MqttClient mqttClient;
 
 	public static void main(String[] args) {
-		System.out.println(" +---------------------------------+");
-		System.out.println(" |  DigiMesh Signal Mapper Router  |");
-		System.out.println(" +---------------------------------+\n");
+		System.out.println(" +------------------------------------------+");
+		System.out.println(" |  DigiMesh Signal Mapper Router : AMAGGI  |");
+		System.out.println(" +------------------------------------------+\n");
 
 		new LogRecord();
 
