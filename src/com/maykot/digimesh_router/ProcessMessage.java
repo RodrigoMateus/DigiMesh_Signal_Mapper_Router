@@ -23,9 +23,7 @@ public class ProcessMessage implements IProcessMessage {
 	}
 
 	@Override
-	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
-
-	}
+	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
 
 	@Override
 	public void textFileConfirm(byte[] message) {
@@ -37,9 +35,7 @@ public class ProcessMessage implements IProcessMessage {
 	}
 
 	@Override
-	public void localPostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
-
-	}
+	public void localPostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
 
 	@Override
 	public void localPostConfirm(byte[] message) {
@@ -49,9 +45,7 @@ public class ProcessMessage implements IProcessMessage {
 	}
 
 	@Override
-	public void mobilePostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
-
-	}
+	public void mobilePostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
 
 	@Override
 	public void mobilePostConfirm(byte[] message) {
@@ -66,7 +60,7 @@ public class ProcessMessage implements IProcessMessage {
 	}
 
 	@Override
-	public void packetTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message, int potencia) {}
+	public void packetTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message, int rssi) {}
 
 	@Override
 	public void packetTransferConfirm(byte[] message) {}
