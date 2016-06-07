@@ -75,27 +75,15 @@ public class ProcessMessage implements IProcessMessage {
 	}
 
 	@Override
-	public void packetTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {
-		// TODO Auto-generated method stub
-
-	}
+	public void packetTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {}
 
 	@Override
-	public void packetTransferConfirm(byte[] message) {
-		// TODO Auto-generated method stub
-
-	}
+	public void packetTransferConfirm(byte[] message) {}
 
 	@Override
-	public void telemetryTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {
-		// TODO Auto-generated method stub
-
-	}
+	public void telemetryTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {}
 
 	@Override
-	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {
-		// TODO Auto-generated method stub
-
-	}
+	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {}
 
 }
