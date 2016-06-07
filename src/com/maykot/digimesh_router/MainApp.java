@@ -45,9 +45,7 @@ public class MainApp {
 
 		try {
 			remoteDevice = DiscoverRemoteDevice.discover(deviceConfig, receiverDevice);
-		} catch (XBeeException e2) {
-			e2.printStackTrace();
-		}
+		} catch (XBeeException e2) {}
 
 		try {
 			mqttClient = MqttRouter.getInstance().setMqttRouter(deviceConfig, senderDevice, remoteDevice);
@@ -64,6 +62,9 @@ public class MainApp {
 		} catch (XBeeException e) {
 			e.printStackTrace();
 		}
+		
+		new Thread(new RadioMonitor(receiverDevice)).start();
+
 
 		// Menu para seleção de Testes
 		TestRouter.showMenu();

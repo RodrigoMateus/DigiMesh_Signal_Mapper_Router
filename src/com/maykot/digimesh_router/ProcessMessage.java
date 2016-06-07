@@ -45,15 +45,19 @@ public class ProcessMessage implements IProcessMessage {
 	}
 
 	@Override
-	public void mobilePostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
+	public void proxyMessageReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
 
 	@Override
-	public void mobilePostConfirm(byte[] message) {
+	public void proxyMessageConfirm(byte[] message, int rssi) {
 		ProxyResponse proxyResponse = (ProxyResponse) SerializationUtils.deserialize(message);
 
 		String clientId = proxyResponse.getMqttClientId();
 		String messageId = proxyResponse.getIdMessage();
 
+		//if(proxyResponse.getVerb().contains("check")){
+		//	RadioCkeck.radioCheck(proxyResponse, rssi);
+		//}
+		
 		new MqttMessageSender().sendResponseMessage(MainApp.mqttClient, clientId, messageId, message);
 		System.out.println("Mobile POST Response: " + proxyResponse.getStatusCode() + " - "
 				+ ErrorMessage.get(proxyResponse.getStatusCode()).description());
