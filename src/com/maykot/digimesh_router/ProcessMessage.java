@@ -12,30 +12,12 @@ import com.maykot.radiolibrary.mqtt.MqttMessageSender;
 
 public class ProcessMessage implements IProcessMessage {
 
-	public ProcessMessage() {}
-
-	@Override
-	public void clientConnectionReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
-
-	@Override
-	public void clientConnectionConfirm(byte[] message) {
-		System.out.println(new String(message));
+	public ProcessMessage() {
 	}
 
 	@Override
-	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
-
-	@Override
-	public void textFileConfirm(byte[] message) {
-		byte[] rssi;
-		try {
-			rssi = MainApp.receiverDevice.getParameter("DB");
-			System.out.println(new String("RSSI Value: " + ByteUtils.byteArrayToInt(rssi)));
-		} catch (XBeeException e) {}
+	public void localPostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
 	}
-
-	@Override
-	public void localPostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
 
 	@Override
 	public void localPostConfirm(byte[] message) {
@@ -45,7 +27,8 @@ public class ProcessMessage implements IProcessMessage {
 	}
 
 	@Override
-	public void proxyMessageReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
+	public void proxyMessageReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
+	}
 
 	@Override
 	public void proxyMessageConfirm(byte[] message, int rssi) {
@@ -54,24 +37,54 @@ public class ProcessMessage implements IProcessMessage {
 		String clientId = proxyResponse.getMqttClientId();
 		String messageId = proxyResponse.getIdMessage();
 
-		if(proxyResponse.getVerb().contains("check")){
+		if (proxyResponse.getVerb().contains("check")) {
 			RadioCkeck.radioCheck(proxyResponse, rssi);
 		}
-		
-		new MqttMessageSender().sendResponseMessage(MainApp.mqttClient, clientId, messageId, SerializationUtils.serialize(proxyResponse));
+
+		new MqttMessageSender().sendResponseMessage(MainApp.mqttClient, clientId, messageId,
+				SerializationUtils.serialize(proxyResponse));
 		System.out.println("Mobile POST Response: " + proxyResponse.getStatusCode() + " - "
-				+ ErrorMessage.get(proxyResponse.getStatusCode()).description() +" "+new String(proxyResponse.getBody()));
+				+ ErrorMessage.get(proxyResponse.getStatusCode()).description() + " "
+				+ new String(proxyResponse.getBody()));
 	}
 
 	@Override
-	public void packetTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message, int rssi) {}
+	public void packetTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message, int rssi) {
+	}
 
 	@Override
-	public void packetTransferConfirm(byte[] message) {}
-
-	public void telemetryTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message, int rssi) {}
+	public void packetTransferConfirm(byte[] message) {
+	}
 
 	@Override
-	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {}
+	public void telemetryTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message, int rssi) {
+	}
+
+	@Override
+	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {
+	}
+
+	@Override
+	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
+	}
+
+	@Override
+	public void textFileConfirm(byte[] message) {
+		byte[] rssi;
+		try {
+			rssi = MainApp.receiverDevice.getParameter("DB");
+			System.out.println(new String("RSSI Value: " + ByteUtils.byteArrayToInt(rssi)));
+		} catch (XBeeException e) {
+		}
+	}
+
+	@Override
+	public void clientConnectionReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
+	}
+
+	@Override
+	public void clientConnectionConfirm(byte[] message) {
+		System.out.println(new String(message));
+	}
 
 }
