@@ -12,15 +12,10 @@ import com.maykot.radiolibrary.mqtt.MqttMessageSender;
 
 public class ProcessMessage implements IProcessMessage {
 
-	public ProcessMessage() {
-
-	}
+	public ProcessMessage() {}
 
 	@Override
-	public void clientConnectionReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
-		// TODO Auto-generated method stub
-
-	}
+	public void clientConnectionReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
 
 	@Override
 	public void clientConnectionConfirm(byte[] message) {
@@ -28,27 +23,19 @@ public class ProcessMessage implements IProcessMessage {
 	}
 
 	@Override
-	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
-
-	}
+	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
 
 	@Override
 	public void textFileConfirm(byte[] message) {
-		System.out.println(new String(message));
 		byte[] rssi;
 		try {
 			rssi = MainApp.receiverDevice.getParameter("DB");
 			System.out.println(new String("RSSI Value: " + ByteUtils.byteArrayToInt(rssi)));
-		} catch (XBeeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (XBeeException e) {}
 	}
 
 	@Override
-	public void localPostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
-
-	}
+	public void localPostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
 
 	@Override
 	public void localPostConfirm(byte[] message) {
@@ -58,9 +45,7 @@ public class ProcessMessage implements IProcessMessage {
 	}
 
 	@Override
-	public void mobilePostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {
-
-	}
+	public void mobilePostReceived(RemoteXBeeDevice sourceDeviceAddress, byte[] message) {}
 
 	@Override
 	public void mobilePostConfirm(byte[] message) {
@@ -75,13 +60,12 @@ public class ProcessMessage implements IProcessMessage {
 	}
 
 	@Override
-	public void packetTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {}
+	public void packetTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message, int rssi) {}
 
 	@Override
 	public void packetTransferConfirm(byte[] message) {}
 
-	@Override
-	public void telemetryTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {}
+	public void telemetryTransferReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message, int rssi) {}
 
 	@Override
 	public void textFileReceived(RemoteXBeeDevice sourceDeviceAddress, String md5, byte[] message) {}
