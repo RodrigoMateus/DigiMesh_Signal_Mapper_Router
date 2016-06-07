@@ -11,7 +11,7 @@ public class RadioCkeck {
 	 * @return
 	 */
 	public static ProxyResponse radioCheck(ProxyResponse proxyResponse, int rssi){
-		proxyResponse.setBody(new String("{\"rssi\":"+rssi+"}").getBytes());
+		proxyResponse.setBody(new String("{rssi:"+rssi+"}").getBytes());
 		return proxyResponse;
 		
 	}

@@ -54,13 +54,13 @@ public class ProcessMessage implements IProcessMessage {
 		String clientId = proxyResponse.getMqttClientId();
 		String messageId = proxyResponse.getIdMessage();
 
-		//if(proxyResponse.getVerb().contains("check")){
-		//	RadioCkeck.radioCheck(proxyResponse, rssi);
-		//}
+		if(proxyResponse.getVerb().contains("check")){
+			RadioCkeck.radioCheck(proxyResponse, rssi);
+		}
 		
-		new MqttMessageSender().sendResponseMessage(MainApp.mqttClient, clientId, messageId, message);
+		new MqttMessageSender().sendResponseMessage(MainApp.mqttClient, clientId, messageId, SerializationUtils.serialize(proxyResponse));
 		System.out.println("Mobile POST Response: " + proxyResponse.getStatusCode() + " - "
-				+ ErrorMessage.get(proxyResponse.getStatusCode()).description());
+				+ ErrorMessage.get(proxyResponse.getStatusCode()).description() +" "+new String(proxyResponse.getBody()));
 	}
 
 	@Override
